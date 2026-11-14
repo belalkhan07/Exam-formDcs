@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Belal Khan — Full Stack Developer, SQL Developer and aspiring Azure Data Engineer."
+    />
+    <meta name="theme-color" content="#09121f" />
+    <title>Belal Khan | Full Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #09121f;
+        --bg-soft: #0d1829;
+        --panel: rgba(16, 25, 40, 0.9);
+        --panel-2: rgba(17, 31, 49, 0.95);
+        --line: rgba(154, 177, 214, 0.18);
+        --line-light: rgba(154, 177, 214, 0.12);
+        --text: #edf5ff;
+        --muted: #9fb2c7;
+        --soft: #c5d2e5;
+        --cyan: #6fe7dd;
+        --blue: #7aa7ff;
+        --violet: #bca4ff;
+        --green: #7fe7b2;
+        --shadow: rgba(0, 0, 0, 0.32);
+        --max: 1180px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top right, rgba(105, 136, 255, 0.16), transparent 35%),
+          radial-gradient(circle at left top, rgba(111, 231, 221, 0.10), transparent 22%),
+          var(--bg);
+        color: var(--text);
+        font-family: "Manrope", sans-serif;
+        line-height: 1.7;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .wrap {
+        width: min(var(--max), calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .mono {
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        border-bottom: 1px solid var(--line);
+        background: rgba(9, 18, 31, 0.76);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+
+      nav {
+        height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        font-weight: 800;
+        letter-spacing: -0.06em;
+        font-size: 1.35rem;
+      }
+
+      .brand span {
+        color: var(--cyan);
+      }
+
+      .navlinks {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .navlinks a {
+        position: relative;
+        transition: color 0.2s ease;
+      }
+
+      .navlinks a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 100%;
+        height: 1.5px;
+        background: linear-gradient(90deg, var(--cyan), var(--blue));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.2s ease;
+      }
+
+      .navlinks a:hover {
+        color: var(--text);
+      }
+
+      .navlinks a:hover::after {
+        transform: scaleX(1);
+      }
+
+      .menu {
+        display: none;
+        background: transparent;
+        color: var(--text);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+
+      .hero {
+        padding: 110px 0 82px;
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 48px;
+        align-items: center;
+        min-height: 680px;
+      }
+
+      .eyebrow {
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        color: var(--cyan);
+      }
+
+      h1 {
+        font-size: clamp(3rem, 7vw, 5.7rem);
+        line-height: 1.02;
+        letter-spacing: -0.08em;
+        margin: 18px 0 24px;
+      }
+
+      .gradient-text {
+        background: linear-gradient(90deg, var(--cyan), var(--blue) 50%, var(--violet));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .lead {
+        max-width: 700px;
+        color: var(--soft);
+        font-size: 1.08rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 32px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        padding: 13px 18px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        font-weight: 700;
+        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn.primary {
+        background: linear-gradient(110deg, var(--cyan), var(--blue));
+        border: none;
+        color: #07131d;
+        box-shadow: 0 18px 28px rgba(111, 231, 221, 0.18);
+      }
+
+      .btn.secondary {
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .hero-card {
+        position: relative;
+        background: linear-gradient(145deg, rgba(18, 32, 51, 0.96), rgba(11, 20, 31, 0.96));
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 26px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.26);
+        overflow: hidden;
+      }
+
+      .hero-card::before {
+        content: "";
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: rgba(111, 231, 221, 0.12);
+        filter: blur(32px);
+        right: -80px;
+        top: -80px;
+      }
+
+      .avatar {
+        width: 160px;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 26px;
+        border: 2px solid rgba(111, 231, 221, 0.6);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        margin-bottom: 22px;
+      }
+
+      .hero-card h2 {
+        margin: 10px 0 8px;
+        font-size: clamp(1.8rem, 3vw, 2.2rem);
+        letter-spacing: -0.06em;
+      }
+
+      .location {
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .stat {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 14px 12px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.38rem;
+        letter-spacing: -0.04em;
+      }
+
+      .stat small {
+        color: var(--muted);
+        display: block;
+        margin-top: 4px;
+      }
+
+      .note {
+        margin-top: 22px;
+        font-size: 0.84rem;
+        color: var(--muted);
+        border-left: 2px solid var(--cyan);
+        padding-left: 13px;
+      }
+
+      section {
+        padding: 86px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 28px;
+        margin-bottom: 32px;
+      }
+
+      h2 {
+        font-size: clamp(2.2rem, 4vw, 3.2rem);
+        line-height: 1.1;
+        letter-spacing: -0.07em;
+        margin: 10px 0 0;
+      }
+
+      .section-desc {
+        color: var(--muted);
+        max-width: 560px;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .card {
+        background: linear-gradient(145deg, rgba(17, 29, 47, 0.95), rgba(12, 20, 32, 0.95));
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 24px 22px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      }
+
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 1.25rem;
+        letter-spacing: -0.04em;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .tagrow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .tag {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 6px 10px;
+        color: #d4e1f3;
+        font-size: 0.76rem;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .skill h3 {
+        margin: 0 0 10px;
+        font-size: 1.1rem;
+      }
+
+      .skill p {
+        font-size: 0.94rem;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 18px;
+      }
+
+      .job {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 28px;
+      }
+
+      .job-date {
+        padding-top: 8px;
+        font-family: "JetBrains Mono", monospace;
+        color: var(--cyan);
+        font-size: 0.76rem;
+        letter-spacing: 0.06em;
+      }
+
+      .job h3 {
+        margin: 0;
+        font-size: 1.12rem;
+      }
+
+      .company {
+        color: var(--muted);
+        margin-top: 4px;
+        font-size: 0.9rem;
+      }
+
+      .job ul {
+        margin: 12px 0 0;
+        padding-left: 18px;
+        color: #bfd0ea;
+      }
+
+      .job li + li {
+        margin-top: 6px;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .project {
+        min-height: 240px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project .number {
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: 0.08em;
+        font-size: 0.72rem;
+        color: var(--cyan);
+      }
+
+      .project h3 {
+        margin: 14px 0 10px;
+        font-size: 1.34rem;
+        letter-spacing: -0.04em;
+      }
+
+      .project p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .project .tagrow {
+        margin-top: auto;
+        padding-top: 20px;
+      }
+
+      .education {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .edu h3 {
+        margin: 0 0 7px;
+        font-size: 1.1rem;
+      }
+
+      .edu p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .cert-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .cert {
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .cert img {
+        width: 100%;
+        height: 190px;
+        object-fit: contain;
+        background: #f5f7fb;
+        display: block;
+      }
+
+      .cert-body {
+        padding: 16px 16px 18px;
+      }
+
+      .cert h3 {
+        margin: 0 0 6px;
+        font-size: 0.96rem;
+      }
+
+      .cert p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .contact {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        align-items: center;
+      }
+
+      .contact-links {
+        display: grid;
+        gap: 12px;
+      }
+
+      .contact-link {
+        display: block;
+        padding: 16px 18px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.02);
+        color: #dfeaff;
+        transition: border-color 0.2s ease, transform 0.2s ease;
+      }
+
+      .contact-link:hover {
+        border-color: rgba(111, 231, 221, 0.65);
+        transform: translateY(-1px);
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 26px 0 32px;
+        color: var(--muted);
+      }
+
+      footer .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 980px) {
+        .hero {
+          grid-template-columns: 1fr;
+          padding-top: 88px;
+          min-height: auto;
+        }
+
+        .hero-card {
+          max-width: 520px;
+        }
+
+        .skills {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .cert-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 700px) {
+        .wrap {
+          width: min(var(--max), calc(100% - 28px));
+        }
+
+        .navlinks {
+          display: none;
+          position: absolute;
+          top: 76px;
+          left: 0;
+          right: 0;
+          background: rgba(9, 18, 31, 0.96);
+          border-bottom: 1px solid var(--line);
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 18px 20px 22px;
+          gap: 14px;
+        }
+
+        .navlinks.open {
+          display: flex;
+        }
+
+        .menu {
+          display: block;
+        }
+
+        .about-grid,
+        .education,
+        .project-grid,
+        .contact,
+        .cert-grid,
+        .skills {
+          grid-template-columns: 1fr;
+        }
+
+        .job {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+
+        .section-head {
+          display: block;
+        }
+
+        .cert img {
+          height: 170px;
+        }
+
+        section {
+          padding: 70px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <nav>
+          <a href="#home" class="brand">BK<span>.</span></a>
+
+          <div class="navlinks" id="navlinks">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact</a>
+          </div>
+
+          <button class="menu" id="menu" aria-label="Toggle navigation">☰</button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="wrap hero" id="home">
+        <div>
+          <div class="eyebrow">Full Stack Developer • SQL • Data Engineering</div>
+          <h1>
+            Building useful<br />
+            <span class="gradient-text">software & data</span><br />
+            solutions.
+          </h1>
+
+          <p class="lead">
+            I’m Belal Khan — a software engineer focused on backend and full-stack
+            development, database engineering, and the next step into Azure data engineering.
+            I turn business requirements into reliable applications, APIs, and actionable data.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">Explore my work ↗</a>
+            <a class="btn secondary" href="assets/Belal_Khan_Resume.pdf" target="_blank" rel="noopener">
+              View résumé ↓
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <img
+            class="avatar"
+            src="assets/belal-khan-profile.jpg"
+            alt="Belal Khan profile photograph"
+          />
+
+          <div class="eyebrow">Developer profile</div>
+          <h2>Belal Khan</h2>
+          <p class="location">Kanpur, Uttar Pradesh, India</p>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>4+</strong>
+              <small>Years experience</small>
+            </div>
+            <div class="stat">
+              <strong>.NET</strong>
+              <small>Backend ecosystem</small>
+            </div>
+            <div class="stat">
+              <strong>SQL</strong>
+              <small>Database engineering</small>
+            </div>
+            <div class="stat">
+              <strong>MCA</strong>
+              <small>IIT Patna / IIIT Ranchi</small>
+            </div>
+          </div>
+
+          <p class="note">
+            Interested in Full Stack, SQL / database, and Azure Data Engineering opportunities.
+          </p>
+        </aside>
+      </div>
+
+      <section id="about">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">01 / About</div>
+              <h2>Engineering with a business-first mindset.</h2>
+            </div>
+            <p class="section-desc">
+              My experience spans application development, SQL databases, reporting,
+              and business-facing technology work.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <div class="card">
+              <h3>What I do</h3>
+              <p>
+                I develop web applications and REST APIs with C#, ASP.NET Core/MVC,
+                and relational databases. My work includes business logic,
+                authentication, integrations, database design, query optimization,
+                deployment, and production support.
+              </p>
+              <div class="tagrow">
+                <span class="tag">Backend engineering</span>
+                <span class="tag">Full-stack development</span>
+                <span class="tag">Database systems</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Where I’m growing</h3>
+              <p>
+                I’m expanding my engineering skill set toward Azure cloud and data engineering,
+                building on my SQL, reporting, data analysis, and application-development foundation.
+              </p>
+              <div class="tagrow">
+                <span class="tag">Azure</span>
+                <span class="tag">Data engineering</span>
+                <span class="tag">Analytics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">02 / Toolkit</div>
+              <h2>Technical skills.</h2>
+            </div>
+            <p class="section-desc">
+              Tools and technologies in my learning and professional profile.
+            </p>
+          </div>
+
+          <div class="skills">
+            <div class="card skill">
+              <h3>Backend &amp; APIs</h3>
+              <p>C#, ASP.NET Core, ASP.NET MVC, Web API, Entity Framework Core, LINQ, ADO.NET, REST APIs</p>
+            </div>
+
+            <div class="card skill">
+              <h3>SQL &amp; Databases</h3>
+              <p>SQL Server, MySQL, PostgreSQL, stored procedures, joins, views, indexing, query optimization</p>
+            </div>
+
+            <div class="card skill">
+              <h3>Azure &amp; Cloud</h3>
+              <p>Microsoft Azure, Azure App Service, Azure SQL, Azure Storage, Azure Functions, Key Vault, Application Insights</p>
+            </div>
+
+            <div class="card skill">
+              <h3>Frontend</h3>
+              <p>JavaScript, HTML5, CSS3, Bootstrap, Tailwind CSS, jQuery</p>
+            </div>
+
+            <div class="card skill">
+              <h3>Data &amp; Analytics</h3>
+              <p>MIS reporting, Excel-based analysis, dashboards, ETL support, business analytics, financial modelling foundations</p>
+            </div>
+
+            <div class="card skill">
+              <h3>Tools &amp; Practices</h3>
+              <p>Git, IIS, Postman, Visual Studio, VS Code, Clean Architecture, layered architecture, Agile</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">03 / Career</div>
+              <h2>Experience.</h2>
+            </div>
+            <p class="section-desc">
+              Professional roles drawn from my background and recent work.
+            </p>
+          </div>
+
+          <div class="timeline">
+            <article class="card job">
+              <div class="job-date">FEB 2025 — PRESENT</div>
+              <div>
+                <h3>IT Manager / Software Engineer</h3>
+                <div class="company">MYMY · Kanpur</div>
+                <ul>
+                  <li>Develop web applications using ASP.NET Core/MVC, C#, SQL Server, and Clean Architecture principles.</li>
+                  <li>Build REST APIs, integrations, business workflows, authentication, and role-based authorization.</li>
+                  <li>Design and optimize SQL Server/MySQL data layers; support IIS/cloud deployments and production troubleshooting.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="card job">
+              <div class="job-date">OCT 2024 — PRESENT</div>
+              <div>
+                <h3>Assistant Software Engineer</h3>
+                <div class="company">ASOFTCODE · Ahmedabad (Remote)</div>
+                <ul>
+                  <li>Develop and maintain web applications and backend functionality using Python, ASP.NET, C#, SQL, and MySQL.</li>
+                  <li>Build responsive interfaces, integrate frontend components with backend services, and troubleshoot application issues.</li>
+                  <li>Contribute to PHP-based server-side development and database-driven solutions.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="card job">
+              <div class="job-date">JAN 2024 — AUG 2024</div>
+              <div>
+                <h3>Software Developer</h3>
+                <div class="company">EDUGLAR TECHNOLOGY · Kanpur</div>
+                <ul>
+                  <li>Developed full-stack applications with ASP.NET MVC/Core, C#, SQL Server, and JavaScript-based frontend tools.</li>
+                  <li>Built APIs, CRUD workflows, validation, authentication, and database schemas, procedures, and queries.</li>
+                  <li>Worked with Entity Framework, ADO.NET, IIS, Git, and Postman.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="card job">
+              <div class="job-date">FEB 2022 — DEC 2023</div>
+              <div>
+                <h3>SQL Developer &amp; Analyst</h3>
+                <div class="company">EAST WEST TANNERS · Kanpur</div>
+                <ul>
+                  <li>Designed and maintained SQL Server databases with focus on data integrity, security, and performance.</li>
+                  <li>Developed complex queries, views, functions, and stored procedures; optimized queries and indexes.</li>
+                  <li>Created MIS reports and dashboards for sales, inventory, and business analysis; supported ETL and reporting automation.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">04 / Selected work</div>
+              <h2>Projects &amp; focus areas.</h2>
+            </div>
+            <p class="section-desc">
+              A showcase of engineering capabilities and portfolio directions.
+            </p>
+          </div>
+
+          <div class="project-grid">
+            <article class="card project">
+              <div class="number">PROJECT 01 · WEB APPLICATION</div>
+              <h3>ASP.NET Core Business Application</h3>
+              <p>
+                Layered application architecture with REST APIs, authentication,
+                role-based access, CRUD workflows, and relational database integration.
+              </p>
+              <div class="tagrow">
+                <span class="tag">C#</span>
+                <span class="tag">ASP.NET Core</span>
+                <span class="tag">EF Core</span>
+                <span class="tag">SQL Server</span>
+              </div>
+            </article>
+
+            <article class="card project">
+              <div class="number">PROJECT 02 · DATABASE</div>
+              <h3>SQL Reporting &amp; Optimization</h3>
+              <p>
+                Business reporting foundation using complex SQL queries, stored procedures,
+                views, indexing, and dashboards for sales and inventory insights.
+              </p>
+              <div class="tagrow">
+                <span class="tag">SQL Server</span>
+                <span class="tag">MIS</span>
+                <span class="tag">Query tuning</span>
+              </div>
+            </article>
+
+            <article class="card project">
+              <div class="number">PROJECT 03 · CLOUD LEARNING</div>
+              <h3>Azure Application Deployment</h3>
+              <p>
+                Portfolio target: deploy an ASP.NET Core API to Azure App Service,
+                connect Azure SQL, and configure application monitoring.
+              </p>
+              <div class="tagrow">
+                <span class="tag">Azure App Service</span>
+                <span class="tag">Azure SQL</span>
+                <span class="tag">App Insights</span>
+              </div>
+            </article>
+
+            <article class="card project">
+              <div class="number">PROJECT 04 · DATA ENGINEERING</div>
+              <h3>Azure Data Pipeline</h3>
+              <p>
+                Learning project direction: design an ingestion, transformation,
+                and serving pipeline, then document data quality checks and monitoring.
+              </p>
+              <div class="tagrow">
+                <span class="tag">ETL / ELT</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Azure</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="education">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">05 / Learning</div>
+              <h2>Education.</h2>
+            </div>
+          </div>
+
+          <div class="education">
+            <div class="card edu">
+              <h3>Master of Computer Applications (MCA)</h3>
+              <p>Joint Degree Program · IIT Patna &amp; IIIT Ranchi<br />Currently pursuing · Expected 2027–2028</p>
+            </div>
+
+            <div class="card edu">
+              <h3>Bachelor of Computer Applications (BCA)</h3>
+              <p>Himalayan Garhwal University<br />2019–2022 · 64%</p>
+            </div>
+
+            <div class="card edu">
+              <h3>Class XII</h3>
+              <p>Oxford Model Senior Secondary School, Kanpur · 70%</p>
+            </div>
+
+            <div class="card edu">
+              <h3>Class X</h3>
+              <p>St. Xavier’s School, Ballia · 66%</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="certifications">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">06 / Credentials</div>
+              <h2>Certifications &amp; recognition.</h2>
+            </div>
+            <p class="section-desc">
+              Selected certificates from my learning journey.
+            </p>
+          </div>
+
+          <div class="cert-grid">
+            <article class="card cert">
+              <a href="assets/pwc-financial-modelling.jpg" target="_blank" rel="noopener">
+                <img src="assets/pwc-financial-modelling.jpg" alt="PwC and upGrad Financial Modelling and Analysis certificate" />
+              </a>
+              <div class="cert-body">
+                <h3>Financial Modelling &amp; Analysis</h3>
+                <p>PwC India Academy · upGrad · 03 Aug 2024</p>
+              </div>
+            </article>
+
+            <article class="card cert">
+              <a href="assets/internshala-business-analytics.jpg" target="_blank" rel="noopener">
+                <img src="assets/internshala-business-analytics.jpg" alt="Internshala Business Analytics training certificate" />
+              </a>
+              <div class="cert-body">
+                <h3>Business Analytics</h3>
+                <p>Internshala Trainings · 8-week training · 2023</p>
+              </div>
+            </article>
+
+            <article class="card cert">
+              <a href="assets/hp-data-science-analytics.png" target="_blank" rel="noopener">
+                <img src="assets/hp-data-science-analytics.png" alt="HP LIFE Data Science and Analytics certificate" />
+              </a>
+              <div class="cert-body">
+                <h3>Data Science &amp; Analytics</h3>
+                <p>HP LIFE · 10 Aug 2024</p>
+              </div>
+            </article>
+
+            <article class="card cert">
+              <a href="assets/hp-it-for-business-success.jpg" target="_blank" rel="noopener">
+                <img src="assets/hp-it-for-business-success.jpg" alt="HP LIFE IT for Business Success certificate" />
+              </a>
+              <div class="cert-body">
+                <h3>IT for Business Success</h3>
+                <p>HP LIFE · 11 Sep 2025</p>
+              </div>
+            </article>
+
+            <article class="card cert">
+              <a href="assets/udemy-dotnet-core-mvc.jpg" target="_blank" rel="noopener">
+                <img src="assets/udemy-dotnet-core-mvc.jpg" alt="Udemy .NET Core MVC course certificate" />
+              </a>
+              <div class="cert-body">
+                <h3>.NET Core MVC — The Complete Guide</h3>
+                <p>Udemy · 17 hours · 18 Sep 2025</p>
+              </div>
+            </article>
+
+            <article class="card cert">
+              <a href="assets/google-developer-groups-appreciation.jpg" target="_blank" rel="noopener">
+                <img src="assets/google-developer-groups-appreciation.jpg" alt="Google Developer Groups appreciation certificate" />
+              </a>
+              <div class="cert-body">
+                <h3>Certificate of Appreciation</h3>
+                <p>Google Developer Groups · Nirmaṇa · 28 Sep 2025</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="wrap contact">
+          <div>
+            <div class="eyebrow">07 / Contact</div>
+            <h2>
+              Let’s build<br />
+              <span style="color: var(--cyan)">something valuable.</span>
+            </h2>
+            <p class="section-desc">
+              Open to conversations about full-stack development, SQL / database engineering,
+              and Azure data engineering opportunities.
+            </p>
+          </div>
+
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:baelalkhan13@gmail.com">✉ &nbsp; baelalkhan13@gmail.com</a>
+            <a class="contact-link" href="tel:+917052449645">☎ &nbsp; +91 70524 49645</a>
+            <div class="contact-link">⌖ &nbsp; Kanpur, Uttar Pradesh, India</div>
+            <a class="contact-link" href="https://github.com/belalkhan07" target="_blank" rel="noopener">🐙 &nbsp; GitHub</a>
+            <a class="contact-link" href="https://www.linkedin.com" target="_blank" rel="noopener">💼 &nbsp; LinkedIn</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <span>© <span id="year"></span> Belal Khan. Built with curiosity and code.</span>
+        <span>Full Stack · SQL · Data Engineering</span>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const menu = document.getElementById("menu");
+      const navlinks = document.getElementById("navlinks");
+
+      menu.addEventListener("click", () => {
+        navlinks.classList.toggle("open");
+      });
+
+      navlinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => navlinks.classList.remove("open"));
+      });
+    </script>
+  </body>
+</html>
